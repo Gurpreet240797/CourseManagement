@@ -5,5 +5,6 @@
 
 <body>
 Enter your Login Details.
+${name} is the name passed.
 </body>
 </html>
