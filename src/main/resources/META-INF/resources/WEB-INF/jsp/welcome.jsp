@@ -7,7 +7,7 @@
 <body>
     <div class="container">
         <br>
-        Welcome to Course Management
+        Welcome ${name}
         <div><a href="list-todos">Mange</a> your Todos!</div>
     </div>
 <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
