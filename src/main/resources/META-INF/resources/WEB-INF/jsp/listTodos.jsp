@@ -7,17 +7,14 @@
 </head>
 
 <body>
-
+<%@ include file="common/header.jspf" %>
+<%@ include file="common/navigation.jspf" %>
 <div class="container">
     <br>
-    <div>Welcome ${name}</div>
-    <hr>
-
     <h1>Your Todos </h1>
     <table class="table">
         <thead>
         <tr>
-            <th>Id</th>
             <th>Description</th>
             <th>Target Date</th>
             <th>Status</th>
@@ -26,10 +23,11 @@
         <tbody>
         <c:forEach items="${todos}" var="todo">
             <tr>
-                <td>${todo.id}</td>
                 <td>${todo.description}</td>
                 <td>${todo.targetDate}</td>
                 <td>${todo.done}</td>
+                <td><a href="update-todo?id=${todo.id}" class="btn btn-success">Update</a>
+                    <a href="delete-todo?id=${todo.id}" class="btn btn-warning">Delete</a></td>
             </tr>
         </c:forEach>
         </tbody>
@@ -38,7 +36,3 @@
     <a href="addTodo" class="btn btn-success">Add Todo</a>
 </div>
 
-    <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-    <script src="webjars/jquery/3.6.0/jquery.min.js"></script>
-</body>
-</html>

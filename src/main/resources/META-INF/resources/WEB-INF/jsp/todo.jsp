@@ -1,26 +1,39 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@include file="common/header.jspf"%>
+<%@ include file="common/navigation.jspf"%>
 
-<html>
-<head>
-    <link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet" >
-    <title>Add Todo</title>
-</head>
-
-<body>
 <div class="container">
     <br>
-    <h3>Welcome ${name}</h3>
-    <div>Add New Todo to List</div>
+    <c:choose>
+        <c:when test="${request == 'delete'}"><h3>Update Todo to the List</h3></c:when>
+        <c:otherwise><h3>Add New Todo to the List</h3></c:otherwise>
+    </c:choose>
+    <hr>
     <%--@elvariable id="todo" type="Todo"--%>
     <form:form method="post" modelAttribute="todo">
         <form:input type="number" name="id" hidden="true" path="id" />
-        Description: <form:input type="text" name="description" required="required"  path="description"/>
+        <fieldset class="mb-3">
+            <form:label path="description">Description</form:label>
+            <form:input type="text" name="description" required="required"  path="description"/>
+            <br>
+            <form:errors path="description" cssClass="text-warning"/>
+        </fieldset>
+
+        <fieldset class="mb-3">
+            <form:label path="targetDate">Target Date</form:label>
+            <form:input type="text" name="targetDate" required="required"  path="targetDate"/>
+            <br>
+            <form:errors path="targetDate" cssClass="text-warning"/>
+        </fieldset>
+
         <form:input type="text" name="done" hidden="true" path="done"/>
+
         <input type="submit" class="btn btn-success">
     </form:form>
 </div>
-<script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
-</body>
-</html>
+
+<script type="text/javascript">
+    $('#targetDate').datepicker({
+        format: 'yyyy-mm-dd',
+        startDate: '-3d'
+    });
+</script>
