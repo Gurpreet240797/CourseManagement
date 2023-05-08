@@ -30,6 +30,7 @@
         <input type="submit" class="btn btn-success">
     </form:form>
 </div>
+<%@ include file="common/footer.jspf" %>
 
 <script type="text/javascript">
     $('#targetDate').datepicker({
